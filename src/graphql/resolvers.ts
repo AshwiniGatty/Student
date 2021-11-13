@@ -1,13 +1,10 @@
-import { getSudents } from "../helpers/getStudent";
+import { getSudents } from "../helpers/getStudents";
 import { createStudent } from "../helpers/createStudent";
 import { deleteStudent } from "../helpers/deleteStudent";
 import { updateStudent } from "../helpers/updateStudent";
 
 export const resolvers = {
     Query: {
-        hello: () => {
-            return "hello Ashwini"
-        },
         getStudents: async ()=> {
             const response = await getSudents();
             return response;
@@ -22,8 +19,8 @@ export const resolvers = {
 
         deleteStudent: async(parent: any, args: any, context: any, info: any) => {
             const {id} = args;
-            await deleteStudent(id);
-            return `OK, student ${id} deleted `;
+            const response = await deleteStudent(id);
+            return response;
         },
 
         updateStudent: async(parent: any, args: any, context: any, info: any) => {

@@ -1,5 +1,5 @@
 import express from "express";
-import {ApolloServer, gql} from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./graphql/typeDefs";
 import { resolvers } from "./graphql/resolvers";
 const app = express();
@@ -15,9 +15,6 @@ const startServer = async() => {
 
     apolloServer.applyMiddleware({app});
 
-    app.use((req,res) =>{
-        res.send("Helloo from express apollo server");
-    })
     app.listen( port, () => {
         // tslint:disable-next-line:no-console
         console.log( `server started at http://localhost:${ port }` );

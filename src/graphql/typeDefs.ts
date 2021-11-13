@@ -7,7 +7,6 @@ export const typeDefs = gql`
         dob: String
     }
     type Query {
-        hello: String
         getStudents : [Student]
     }
 
