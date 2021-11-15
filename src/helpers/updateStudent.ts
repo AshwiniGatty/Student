@@ -25,9 +25,12 @@ export const updateStudent = async(params: {
                 values: [firstName,lastName, dob, id]
             }
             response = await sqlQuery(query);
+            response[0].result = "Student updated";
             return response[0];
         } else {
-            return "No student updated";
+            const res = {} as any;
+            res.result = "Student Not found";
+            return res;
         }
     } catch(e) {
         throw e;

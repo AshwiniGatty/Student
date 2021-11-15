@@ -1,6 +1,7 @@
 import { gql } from "apollo-server-express";
 export const typeDefs = gql`
     type Student{
+        result:String
         id: ID
         first_name: String
         last_name: String
