@@ -1,4 +1,4 @@
-import { sqlQuery } from "../lib/sqlClient";
+import { sqlQuery } from "../../lib/sqlClient";
 
 export const getStudent = async(id: number) => {
     try {

@@ -1,5 +1,5 @@
-import { sqlQuery } from "../lib/sqlClient";
-import { getStudent } from "../helpers/getStudent";
+import { sqlQuery } from "../../lib/sqlClient";
+import { getStudent } from "./getStudent";
 
 export const deleteStudent = async(id: number) => {
     try {

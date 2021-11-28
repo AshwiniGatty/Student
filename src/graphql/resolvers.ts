@@ -1,19 +1,25 @@
-import { getSudents } from "../helpers/getStudents";
-import { createStudent } from "../helpers/createStudent";
-import { deleteStudent } from "../helpers/deleteStudent";
-import { updateStudent } from "../helpers/updateStudent";
+import { getStudents } from "../helpers/prismaHelpers/getStudents";
+import { createStudent } from "../helpers/prismaHelpers/createStudent";
+import { deleteStudent } from "../helpers/prismaHelpers/deleteStudent";
+import { updateStudent } from "../helpers/prismaHelpers/updateStudent";
+
 
 export const resolvers = {
     Query: {
+        // getStudents: async ()=> {
+        //     const response = await getSudents();
+        //     return response;
+        // }
+
         getStudents: async ()=> {
-            const response = await getSudents();
+            const response = await getStudents();
             return response;
         }
+
     },
     Mutation: {
         createStudent: async(parent: any, args: any, context: any, info: any) => {
-            const {first_name, last_name, dob} = args.student;
-            const response = await createStudent(first_name, last_name, dob);
+            const response = await createStudent(args.student);
             return response;
         },
 
@@ -24,10 +30,8 @@ export const resolvers = {
         },
 
         updateStudent: async(parent: any, args: any, context: any, info: any) => {
-            const {id, first_name, last_name, dob} = args;
-            const firstName: string = first_name;
-            const lastName: string = last_name;
-            const response = await updateStudent({firstName, lastName, dob, id});
+            const {id, firstName, lastName, classId} = args;
+            const response = await updateStudent({firstName, lastName, classId}, id);
             return response;
         }
     }
